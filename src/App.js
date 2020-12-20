@@ -1,18 +1,25 @@
+import React from 'react';
 import './index.js';
 import NameFetch from './Pages/NameFetch.js';
 import AmountFetch from './Pages/AmountFetch.js';
-import SumFetch from './Pages/SumFetch';
+import './App.css';
+import ContextComponent from './ContextComponent.js';
+import {ThemeProvider} from './ThemeContext';
 
 function App() {
-  return (
-    <div className="App">
-    <h1>Olenko vielä täällä??</h1>
-    <AmountFetch />
-    <NameFetch />
-    <SumFetch />
-   
 
-    </div>
+  return (
+    <>
+    <ThemeProvider>
+      <header>
+        <h1>Hello there, welcome to the Name Application!</h1>
+      </header>
+      <AmountFetch />
+      <NameFetch />
+
+      <ContextComponent />
+    </ThemeProvider>
+    </>
   );
 }
 

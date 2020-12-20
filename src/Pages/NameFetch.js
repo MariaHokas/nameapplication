@@ -3,8 +3,10 @@ import axios from 'axios';
 
 import { ACTIONS, dataFetchReducer, initialState } from './../Reducer/Reducer';
 import BasicList from '../Components/BasicList';
+import SumFetch from '../Pages/SumFetch';
+import Robotti from '../Image/robot.png';
 
-export default function NameFetch({servertest}) {
+export default function NameFetch({ servertest }) {
     const [state, dispatch] = useReducer(dataFetchReducer, initialState)
     const { names, loading, error } = state
     const [Route, setRoute] = useState('all')
@@ -12,22 +14,35 @@ export default function NameFetch({servertest}) {
     useEffect(() => {
         dispatch({ type: ACTIONS.FETCH_INIT })
         axios.get(`https://localhost:5001/names/${Route}`)
-        .then(response => {
-            dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });
-            console.log('response');
-        })
-        .catch(error => {
-            console.log(error, 'error')
-            dispatch({ type: ACTIONS.FETCH_ERROR })
-        })
+            .then(response => {
+                dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });
+                console.log('response');
+            })
+            .catch(error => {
+                console.log(error, 'error')
+                dispatch({ type: ACTIONS.FETCH_ERROR })
+            })
     }, [Route])
 
     return (
-        <div>
-            <button onClick={() => setRoute('all')}>all</button>
-            <button onClick={() => setRoute('mostpopular')}>mostpopular</button>
-            <button onClick={() => setRoute('alphabeticalorder')}>alphabeticalorder</button>
-            <BasicList loading={loading} names={names} error={error} />
+        <div className="row">
+            <header>
+            <h2>Name database fetch</h2>
+            </header>
+            <div className="col-50">
+                <button className="big_button" onClick={() => setRoute('mostpopular')}>mostpopular</button>
+                <button className="big_button" onClick={() => setRoute('alphabeticalorder')}>alphabeticalorder</button>
+                <br/>
+                <div className="div_image_robot">
+                <img
+                    className="image_robot" src={Robotti} alt="Robotti"
+                />
+                </div>
+            </div>
+            <div className="col-50">
+                <BasicList loading={loading} names={names} error={error} />
+                <SumFetch />
+            </div>
         </div>
     );
 }

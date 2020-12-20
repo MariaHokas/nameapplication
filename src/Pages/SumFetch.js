@@ -22,7 +22,15 @@ export default function SumFetch() {
 
     return (
         <>
-            {loading ? 'Loading' : <h3>Total: {sum}</h3>}
+            {loading ? 'Loading' : 
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Total</th>
+                        <th>{sum}</th>
+                    </tr>
+                </tbody>
+            </table>}
             {error ? error : null}
         </>
     );

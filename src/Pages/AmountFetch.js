@@ -38,8 +38,8 @@ export default function AmountFetch() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input ref={inputRef} placeholder="Type a name and get amount of the person.." />
-                <button>Get Amount</button>
+                <input type="text" ref={inputRef} placeholder="Type a name and get amount of the person.." />
+                <button className="input_button">Get Amount</button>
             </form>
             {empty ? empty : null}
             {loading ? 'loading ' :
@@ -51,7 +51,7 @@ export default function AmountFetch() {
                 </div>
             }
             {error ? error : null}
-
+<hr/>
         </div>
     );
 }

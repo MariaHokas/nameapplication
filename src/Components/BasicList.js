@@ -3,10 +3,14 @@ import React from 'react'
 export default function BasicList({ names, loading, error }) {
     return (
         <div>
-            <h2>Fetch from database tömnönönönö</h2>
+            <header>
+            <h3>Name List</h3>
+            </header>
             {loading ? 'loading ' :
                 <table>
                     <tbody>
+                        <th>Name</th>
+                        <th>Amount</th>
                         {names.map(name =>
                             <tr key={name.nameGuid}>
                                 <td>{name.name1}</td>
