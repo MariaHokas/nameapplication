@@ -1,17 +1,9 @@
 import React, { useReducer, useEffect, useState } from 'react'
 import axios from 'axios'
 
-// import NamesBasic from './NamesBasic';
-import { ACTIONS, dataFetchReducer } from './../Reducer/Reducer';
+import { ACTIONS, dataFetchReducer, initialState } from './../Reducer/Reducer';
 import BasicList from '../Components/BasicList';
 
-
-const initialState = {
-    loading: true,
-    error: '',
-    names: [],
-    names2: [],
-}
 export default function NameFetch() {
     const [state, dispatch] = useReducer(dataFetchReducer, initialState)
     const { names, loading, error } = state

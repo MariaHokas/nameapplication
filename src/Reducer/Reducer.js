@@ -11,7 +11,7 @@ export const initialState = {
     error: '',
     empty: '',
     names: [],
-    text: '',
+    isEmpty: '',
 }
 
 export const dataFetchReducer = (state, action) => {
@@ -45,7 +45,7 @@ export const dataFetchReducer = (state, action) => {
             return {
                 loading: false,
                 names: [],
-                text: "Sorry I didn't find anything by name: ",
+                empty: "Sorry I didn't find anything by name: ",
                 isEmpty: false,
             }
         case ACTIONS.FETCH_INITIALSTATE:
@@ -53,7 +53,6 @@ export const dataFetchReducer = (state, action) => {
                 loading: false,
                 names: [],
                 empty: "Type a name and get amount of the person: ",
-                isEmpty: true,
             }
         default:
             return state
