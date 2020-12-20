@@ -1,23 +1,11 @@
-import logo from './logo.svg';
 import './index.js';
+import NameFetch from './Pages/NameFetch.js';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Toimiiko nopeasti
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>Olenko vielä täällä??</h1>
+    <NameFetch />
     </div>
   );
 }
