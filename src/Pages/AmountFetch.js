@@ -38,7 +38,7 @@ export default function AmountFetch() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input ref={inputRef} />
+                <input ref={inputRef} placeholder="Type a name and get amount of the person.." />
                 <button>Get Amount</button>
             </form>
             {empty ? empty : null}

@@ -4,6 +4,7 @@ export const ACTIONS = {
     FETCH_ERROR: 'FETCH_ERROR',
     FETCH_EMPTY: 'FETCH_EMPTY',
     FETCH_INITIALSTATE: 'FETCH_INITIALSTATE:',
+    FETCH_SUM_SUCCESS: 'FETCH_SUM_SUCCESS',
 }
 
 export const initialState = {
@@ -11,6 +12,7 @@ export const initialState = {
     error: '',
     empty: '',
     names: [],
+    sum: [],
     isEmpty: '',
 }
 
@@ -28,12 +30,6 @@ export const dataFetchReducer = (state, action) => {
                 error: '',
                 empty: '',
                 isEmpty: true,
-            }
-        case ACTIONS.FETCH_JAR_SUCCESS:
-            return {
-                loading: false,
-                names2: action.payload,
-                error: '',
             }
         case ACTIONS.FETCH_ERROR:
             return {
@@ -54,6 +50,12 @@ export const dataFetchReducer = (state, action) => {
                 names: [],
                 empty: "Type a name and get amount of the person: ",
             }
+            case ACTIONS.FETCH_SUM_SUCCESS:
+                return {
+                    loading: false,
+                    sum: action.payload,
+                    error: '',             
+                }
         default:
             return state
     }

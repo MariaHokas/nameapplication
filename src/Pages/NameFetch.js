@@ -1,10 +1,10 @@
-import React, { useReducer, useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useReducer, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import { ACTIONS, dataFetchReducer, initialState } from './../Reducer/Reducer';
 import BasicList from '../Components/BasicList';
 
-export default function NameFetch() {
+export default function NameFetch({servertest}) {
     const [state, dispatch] = useReducer(dataFetchReducer, initialState)
     const { names, loading, error } = state
     const [Route, setRoute] = useState('all')
@@ -12,14 +12,14 @@ export default function NameFetch() {
     useEffect(() => {
         dispatch({ type: ACTIONS.FETCH_INIT })
         axios.get(`https://localhost:5001/names/${Route}`)
-            .then(response => {
-                dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });
-                console.log('response');
-            })
-            .catch(error => {
-                console.log(error, 'error')
-                dispatch({ type: ACTIONS.FETCH_ERROR })
-            })
+        .then(response => {
+            dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });
+            console.log('response');
+        })
+        .catch(error => {
+            console.log(error, 'error')
+            dispatch({ type: ACTIONS.FETCH_ERROR })
+        })
     }, [Route])
 
     return (
