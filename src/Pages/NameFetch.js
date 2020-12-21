@@ -5,11 +5,15 @@ import { ACTIONS, dataFetchReducer, initialState } from './../Reducer/Reducer';
 import BasicList from '../Components/BasicList';
 import SumFetch from '../Pages/SumFetch';
 import Robotti from '../Image/robot.png';
+import Button from '../Components/Button';
+import AmountFetch from './AmountFetch';
+import Header2 from '../Components/Header2';
 
-export default function NameFetch({ servertest }) {
-    const [state, dispatch] = useReducer(dataFetchReducer, initialState)
-    const { names, loading, error } = state
-    const [Route, setRoute] = useState('all')
+
+export default function NameFetch() {
+    const [state, dispatch] = useReducer(dataFetchReducer, initialState);
+    const { names, loading, error } = state;
+    const [Route, setRoute] = useState('all');
 
     useEffect(() => {
         dispatch({ type: ACTIONS.FETCH_INIT })
@@ -27,19 +31,18 @@ export default function NameFetch({ servertest }) {
     return (
         <div className="row">
             <header>
-            <h2>Name database fetch</h2>
+                <Header2 header2Text={'Name database fetch'} />
             </header>
             <div className="col-50">
-                <button className="big_button" onClick={() => setRoute('mostpopular')}>mostpopular</button>
-                <button className="big_button" onClick={() => setRoute('alphabeticalorder')}>alphabeticalorder</button>
-                <br/>
+                <AmountFetch />
+                <br />
                 <div className="div_image_robot">
-                <img
-                    className="image_robot" src={Robotti} alt="Robotti"
-                />
+                    <img height='400' src={Robotti} alt="Robotti" />
                 </div>
             </div>
             <div className="col-50">
+                <Button className="list_button" setRoute={setRoute} routeName='mostpopular' buttonDisplayText="Most Popular" />
+                <Button className="list_button" setRoute={setRoute} routeName='alphabeticalorder' buttonDisplayText="Alphabetical Order" />
                 <BasicList loading={loading} names={names} error={error} />
                 <SumFetch />
             </div>

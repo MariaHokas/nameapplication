@@ -1,7 +1,10 @@
 import React, { useReducer, useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 
-import { ACTIONS, dataFetchReducer, initialState } from './../Reducer/Reducer';
+import { ACTIONS, dataFetchReducer, initialState } from '../Reducer/Reducer';
+// import AmountList from '../Pages/NameFetch';
+import Header3 from '../Components/Header3'
+
 
 export default function AmountFetch() {
     const [state, dispatch] = useReducer(dataFetchReducer, initialState)
@@ -37,21 +40,24 @@ export default function AmountFetch() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" ref={inputRef} placeholder="Type a name and get amount of the person.." />
-                <button className="input_button">Get Amount</button>
-            </form>
-            {empty ? empty : null}
-            {loading ? 'loading ' :
-                <div>
-                    {names.map(name =>
-                        <div key={name.nameGuid}>
-                            <div>{name.name1}'s amount is {name.amount}</div>
-                        </div>)}
-                </div>
-            }
-            {error ? error : null}
-<hr/>
+            <div className="quickSearch">
+                <Header3 header3Text="quick search" />
+                <form onSubmit={handleSubmit}>
+                    <input type="text" ref={inputRef} placeholder="Type a name and get amount of the person.." />
+                    <button className="quickSearch_button">Get Amount</button>
+                </form>
+                {empty ? empty : null}
+                {loading ? 'loading ' :
+                    <div>
+                        {names.map(name =>
+                            <div key={name.nameGuid}>
+                                <h4>{name.name1}'s amount is {name.amount}</h4>
+                            </div>)}
+                    </div>
+                }
+                {error ? error : null}
+                <hr />
+            </div>
         </div>
     );
 }

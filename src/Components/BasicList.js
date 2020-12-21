@@ -1,10 +1,11 @@
 import React from 'react'
+import Header3 from './Header3'
 
 export default function BasicList({ names, loading, error }) {
     return (
         <div>
             <header>
-            <h3>Name List</h3>
+            <Header3 header3Text="Name List"/>
             </header>
             {loading ? 'loading ' :
                 <table>
