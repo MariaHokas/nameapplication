@@ -3,7 +3,6 @@ export const ACTIONS = {
     FETCH_SUCCESS: 'FETCH_SUCCESS',
     FETCH_ERROR: 'FETCH_ERROR',
     FETCH_EMPTY: 'FETCH_EMPTY',
-    FETCH_INITIALSTATE: 'FETCH_INITIALSTATE:',
     FETCH_SUM_SUCCESS: 'FETCH_SUM_SUCCESS',
 }
 
@@ -42,13 +41,7 @@ export const dataFetchReducer = (state, action) => {
                 loading: false,
                 names: [],
                 empty: "Sorry I didn't find anything by name: ",
-                isEmpty: false,
-            }
-        case ACTIONS.FETCH_INITIALSTATE:
-            return {
-                loading: false,
-                names: [],
-                empty: "Type a name and get amount of the person: ",
+                isEmpty: true,
             }
             case ACTIONS.FETCH_SUM_SUCCESS:
                 return {

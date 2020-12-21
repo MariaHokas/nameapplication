@@ -31,7 +31,7 @@ export default function SumFetch() {
                     </tr>
                 </tbody>
             </table>}
-            {error ? error : null}
+          <p className="error">{error ? error : null}</p>  
         </>
     );
 }

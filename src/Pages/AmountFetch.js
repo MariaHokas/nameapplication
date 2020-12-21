@@ -17,12 +17,10 @@ export default function AmountFetch() {
         axios.get(`https://localhost:5001/names/takeonename?name=${Route}`)
             .then(response => {
                 const nameArray = response.data;
-                if (nameArray.length >= 0)
+                if (nameArray.length > 0)
                     dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });
                 else if (nameArray.length === 0 || inputRef.current.value.length !== 0)
                     dispatch({ type: ACTIONS.FETCH_EMPTY });
-                else
-                    dispatch({ type: ACTIONS.FETCH_INITIALSTATE });
                 console.log('response');
             })
             .catch(error => {
@@ -34,7 +32,7 @@ export default function AmountFetch() {
     function handleSubmit(e) {
         e.preventDefault();
         setRoute(inputRef.current.value)
-        if (isEmpty)
+        if (!isEmpty)
             inputRef.current.value = '';
     }
 
@@ -46,7 +44,7 @@ export default function AmountFetch() {
                     <input type="text" ref={inputRef} placeholder="Type a name and get amount of the person.." />
                     <button className="quickSearch_button">Get Amount</button>
                 </form>
-                {empty ? empty : null}
+                <p className="error">{empty ? empty + inputRef.current.value : null} </p>
                 {loading ? 'loading ' :
                     <div>
                         {names.map(name =>
@@ -55,7 +53,7 @@ export default function AmountFetch() {
                             </div>)}
                     </div>
                 }
-                {error ? error : null}
+                <p className="error">{error ? error : null}</p>
                 <hr />
             </div>
         </div>

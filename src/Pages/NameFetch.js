@@ -30,21 +30,24 @@ export default function NameFetch() {
 
     return (
         <div className="row">
+
             <header>
                 <Header2 header2Text={'Name database fetch'} />
             </header>
-            <div className="col-50">
-                <AmountFetch />
-                <br />
-                <div className="div_image_robot">
-                    <img height='400' src={Robotti} alt="Robotti" />
+            <div className="table_box">
+                <div className="col-50">
+                    <AmountFetch />
+                    <br />
+                    <div className="div_image_robot">
+                        <img height='400' src={Robotti} alt="Robotti" />
+                    </div>
                 </div>
-            </div>
-            <div className="col-50">
-                <Button className="list_button" setRoute={setRoute} routeName='mostpopular' buttonDisplayText="Most Popular" />
-                <Button className="list_button" setRoute={setRoute} routeName='alphabeticalorder' buttonDisplayText="Alphabetical Order" />
-                <BasicList loading={loading} names={names} error={error} />
-                <SumFetch />
+                <div className="col-50">
+                    <Button className="list_button" setRoute={setRoute} routeName='mostpopular' buttonDisplayText="Most Popular" />
+                    <Button className="list_button" setRoute={setRoute} routeName='alphabeticalorder' buttonDisplayText="Alphabetical Order" />
+                    <BasicList loading={loading} names={names} error={error} />
+                    <SumFetch />
+                </div>
             </div>
         </div>
     );

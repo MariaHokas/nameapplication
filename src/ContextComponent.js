@@ -10,13 +10,10 @@ export default function ContextComponent() {
     const themeStyles = {
         backgroundColor: darkTheme ? '#152238' : '#F8F8FF',
         color: darkTheme ? '#F8F8FF' : '#152238',
-        margin: 'auto',
-        width: '100%',
-        height: '100%',
     }
     return (
         <>
-            <div className="row" style={themeStyles}>
+            <div className="container" style={themeStyles}>
                 <button onClick={toggleTheme} >Toggle Theme</button>
                 <Header headerText="Hello there! Welcome to the Name Application!"
                 paragraph="The application is built using C# .NET Core (Entity Framework) at the backend and React hooks is used at the frontend. Axios has used for data fetching from the backend. Plane CSS was used to create responsive page." />

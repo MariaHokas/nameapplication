@@ -5,13 +5,17 @@ export default function BasicList({ names, loading, error }) {
     return (
         <div>
             <header>
-            <Header3 header3Text="Name List"/>
+                <Header3 header3Text="Name List" />
             </header>
             {loading ? 'loading ' :
                 <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <th>Name</th>
-                        <th>Amount</th>
                         {names.map(name =>
                             <tr key={name.nameGuid}>
                                 <td>{name.name1}</td>
@@ -19,7 +23,7 @@ export default function BasicList({ names, loading, error }) {
                             </tr>)}
                     </tbody>
                 </table>}
-            {error ? error : null}
+          <p className="error">{error ? error : null}</p>  
         </div>
     );
 }
