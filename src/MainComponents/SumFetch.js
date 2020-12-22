@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 
 import { ACTIONS, dataFetchReducer, initialState } from '../Reducer/Reducer';
+import Sum from '../Components/sum';
 
 
 export default function SumFetch() {
@@ -22,16 +23,7 @@ export default function SumFetch() {
 
     return (
         <>
-            {loading ? 'Loading' : 
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Total</th>
-                        <th>{sum}</th>
-                    </tr>
-                </tbody>
-            </table>}
-          <p className="error">{error ? error : null}</p>  
+        <Sum sum={sum} loading={loading} error={error} />
         </>
     );
 }
