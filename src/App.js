@@ -2,8 +2,8 @@ import React from 'react';
 import './index.js';
 
 import './App.css';
-import ContextComponent from './ContextComponent.js';
-import {ThemeProvider} from './ThemeContext';
+import ContextComponent from './Context/ContextComponent';
+import {ThemeProvider} from './Context/ThemeContext';
 
 function App() {
 

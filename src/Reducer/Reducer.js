@@ -12,7 +12,6 @@ export const initialState = {
     empty: '',
     names: [],
     sum: [],
-    isEmpty: '',
 }
 
 export const dataFetchReducer = (state, action) => {
@@ -28,7 +27,6 @@ export const dataFetchReducer = (state, action) => {
                 names: action.payload,
                 error: '',
                 empty: '',
-                isEmpty: true,
             }
         case ACTIONS.FETCH_ERROR:
             return {
@@ -41,7 +39,6 @@ export const dataFetchReducer = (state, action) => {
                 loading: false,
                 names: [],
                 empty: "Sorry I didn't find anything by name: ",
-                isEmpty: true,
             }
             case ACTIONS.FETCH_SUM_SUCCESS:
                 return {

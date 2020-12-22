@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 
-import { ACTIONS, dataFetchReducer, initialState } from './../Reducer/Reducer';
+import { ACTIONS, dataFetchReducer, initialState } from '../Reducer/Reducer';
 
 
 export default function SumFetch() {
