@@ -8,25 +8,19 @@ import AmountForm from '../Components/AmountForm';
 
 
 export default function AmountFetch() {
-    const [state, dispatch] = useReducer(dataFetchReducer, initialState)
-    const { names, loading, error, empty } = state
-    const [Route, setRoute] = useState('')
-    const inputRef = useRef()
+    const [state, dispatch] = useReducer(dataFetchReducer, initialState);
+    const { names, loading, error } = state;
+    const [Route, setRoute] = useState('');
+    const childRef = useRef();
 
     useEffect(() => {
         dispatch({ type: ACTIONS.FETCH_INIT })
         axios.get(`https://localhost:5001/names/takeonename?name=${Route}`)
             .then(response => {
-                const nameArray = response.data;
-                const currentValue = inputRef.current.value
-                if (nameArray.length > 0) {
-                    dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });
-                    inputRef.current.value = '';
-                }
-                else if (currentValue.length > 0 && nameArray.length === 0) {
-                    dispatch({ type: ACTIONS.FETCH_EMPTY });
-                }
-                console.log('response AmountFetch');
+                    dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: response.data });                   
+                  setTimeout(() => {
+                    childRef.current.value = '';   
+                  }, 500);  
             })
             .catch(error => {
                 console.log(error, 'error')
@@ -36,15 +30,15 @@ export default function AmountFetch() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        setRoute(inputRef.current.value)
+        setRoute(childRef.current.value)
     }
 
-    return (
+    return ( 
         <div>
             <div className="quickSearch">
                 <Header3 header3Text="quick search" />
-                <AmountForm handleSubmit={handleSubmit} empty={empty} inputRef={inputRef} />
-                <AmountList loading={loading} names={names} error={error} />
+                <AmountForm handleSubmit={handleSubmit} forwardedRef={childRef}/>
+                <AmountList loading={loading} names={names} error={error} forwardedRef={childRef} />
             </div>
         </div>
     );

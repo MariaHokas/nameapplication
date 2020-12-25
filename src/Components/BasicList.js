@@ -18,7 +18,7 @@ export default function BasicList({ names, loading, error }) {
                     <tbody>
                         {names.map(name =>
                             <tr key={name.nameGuid}>
-                                <td>{name.name1}</td>
+                                <td>{name.names}</td>
                                 <td>{name.amount}</td>
                             </tr>)}
                     </tbody>

@@ -9,7 +9,6 @@ export const ACTIONS = {
 export const initialState = {
     loading: true,
     error: '',
-    empty: '',
     names: [],
     sum: [],
 }
@@ -26,19 +25,12 @@ export const dataFetchReducer = (state, action) => {
                 loading: false,
                 names: action.payload,
                 error: '',
-                empty: '',
             }
         case ACTIONS.FETCH_ERROR:
             return {
                 loading: false,
                 names: [],
                 error: 'Something went wrong...'
-            }
-        case ACTIONS.FETCH_EMPTY:
-            return {
-                loading: false,
-                names: [],
-                empty: "Sorry I didn't find anything by name: ",
             }
             case ACTIONS.FETCH_SUM_SUCCESS:
                 return {
