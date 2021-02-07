@@ -14,7 +14,7 @@ This Project is a Simple POST ReactJS Project created with create.react-app. Sta
 ## Backend Project GitHub link
 
 Backend is .Net Core REST API
-https://github.com/MariaHokas/.NETCore-API
+https://github.com/MariaHokas/.NETCore-NamesApplication
 
 ## Cloning and Running the Application in local
 
